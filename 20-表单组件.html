@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>20-表单组件</title>
+        <link rel="stylesheet" href="../lib/theme-chalk/index.css">
+        <script src="../js/vue.js"></script>
+        <script src="../lib/index.js"></script>
+    </head>
+        <body>
+        <div id="app">
+            <el-button type="primary" @click="flag = !flag">注册</el-button>
+            <el-dialog :visible.sync="flag" title="注册界面">
+                <el-form>
+                    <!--姓名-->
+                    <el-form-item label="姓名" label-width="60px">
+                        <el-input placeholder="请输入姓名" v-model="uName" prefix-icon="el-icon-user"></el-input>
+                    </el-form-item>
+                    <!--年龄-->
+                    <el-form-item label="年龄" label-width="60px">
+                        <el-input-number placeholder="请输入年龄" v-model="age" :min="1" :max="140" :step="1"></el-input-number>
+                    </el-form-item>
+                    <!--性别-->
+                    <el-form-item label="性别" label-width="60px" >
+                        <el-radio-group v-model="sex">
+                            <el-radio :label="1">男</el-radio>
+                            <el-radio :label="0">女</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                    <!--生日-->
+                    <el-form-item label="生日" label-width="60px">
+                        <el-date-picker v-model="birth"></el-date-picker>
+                    </el-form-item>
+                    <!--地址-->
+                    <el-form-item label="地址" label-width="60px">
+                        <el-input v-model="address" prefix-icon="el-icon-location"></el-input>
+                    </el-form-item>
+                    <!--爱好-->
+                    <el-form-item label="爱好" label-width="60px">
+                        <el-checkbox-group v-model="hobby">
+                            <el-checkbox label="1">游泳</el-checkbox>
+                            <el-checkbox label="2">健身</el-checkbox>
+                            <el-checkbox label="3">美女</el-checkbox>
+                            <el-checkbox label="4">打游戏</el-checkbox>
+                        </el-checkbox-group>
+                    </el-form-item>
+                    <!--职业-->
+                    <el-form-item label="职业" label-width="60px">
+                        <el-select v-model="career">
+                            <el-option label="程序猿" value="1"></el-option>
+                            <el-option label="攻城狮" value="2"></el-option>
+                            <el-option label="码龙" value="3"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <!--婚姻-->
+                    <el-form-item label="婚姻" label-width="60px">
+                        <el-switch active-text="已婚" inactive-text="未婚" v-model="marry"></el-switch>
+                    </el-form-item>
+                    <!--确定 取消-->
+                        <el-form-item label="" label-width="60px">
+                            <el-row type="flex" justify="space-around">
+                                <el-col :span="6"> <el-button type="success" icon="el-icon-check">确定</el-button></el-col>
+                                <el-col :span="6"><el-button type="danger" icon="el-icon-close">取消</el-button></el-col>
+                            </el-row>
+                        </el-form-item>
+                </el-form>
+            </el-dialog>
+        </div>
+        <script>
+            let vue = new Vue({
+                el: "#app",
+                data:{
+                    uName: undefined,
+                    age: undefined,
+                    sex: 1,
+                    birth: undefined,
+                    address: undefined,
+                    hobby:["2","3"],
+                    career:"2",
+                    marry:undefined,
+                    flag:false
+                }
+            });
+        </script>
+    </body>
+</html>
